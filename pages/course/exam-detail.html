@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Нүүр хуудас</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/main.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-divider: #dce4e8;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaSearchInput {
+        @apply pr-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-primary-light placeholder:text-text-disabled text-base align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+
+      .plumaIconButton {
+        @apply size-10 rounded-lg flex items-center justify-center transition duration-200 hover:bg-black/10;
+      }
+
+      .categoryItem {
+        @apply py-2.5 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer border-b-2 flex items-center gap-2;
+      }
+
+      .activeCategoryItem {
+        @apply text-text-primary border-primary;
+      }
+
+      .inactiveCategoryItem {
+        @apply text-text-secondary border-transparent hover:text-text-primary;
+      }
+
+      .menuItem {
+        @apply py-3 px-4 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer rounded-md flex items-center gap-4;
+      }
+
+      .activeMenuItem {
+        @apply bg-primary/[8%] text-primary;
+      }
+
+      .inactiveMenuItem {
+        @apply text-text-secondary hover:bg-black/5;
+      }
+    </style>
+  </head>
+  <body onload="init('exam-detail')" class="bg-gray-50">
+    <header class="border-b border-gray-200 sticky top-0 bg-white z-10">
+      <div
+        class="container mx-auto px-6 flex items-center justify-between h-[100px]"
+      >
+        <div class="flex items-center gap-4">
+          <img alt="close" src="../../assets/icons/close.svg" class="size-5" />
+          <div>
+            <h1 class="text-2xl font-bold mb-3">Хичээл 1-ийн сорил</h1>
+            <div class="flex items-center gap-6">
+              <div class="flex items-center gap-1">
+                <img
+                  alt="list"
+                  src="../../assets/icons/list.svg"
+                  class="size-5"
+                />
+                <span>10 асуулт</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <img
+                  alt="time"
+                  src="../../assets/icons/time.svg"
+                  class="size-[18px]"
+                />
+                <span>10 мин</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>09:56</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container 2xl:max-w-7xl mx-auto px-6 py-10 space-y-10">
+        <div class="flex items-start gap-3">
+          <div class="text-base font-semibold pl-1">1.</div>
+          <div class="flex-1 space-y-6">
+            <p class="text-base">
+              The University recently inherited a large mansion from a wealthy
+              alumnus. The University plans to use the mansion to host faculty
+              parties and to house distinguished guests. The opportunity cost of
+              the mansion to the University is:
+            </p>
+
+            <!-- Answers -->
+            <ul class="space-y-6 pl-4">
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="option"
+                  id="option1"
+                  value="option1"
+                />
+                <label for="option1" class="plumaLabel"
+                  >the cost of catering the parties at the mansion</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="option"
+                  id="option2"
+                  value="option2"
+                />
+                <label for="option2" class="plumaLabel"
+                  >the original cost of building the mansion</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="option"
+                  id="option3"
+                  value="option3"
+                />
+                <label for="option3" class="plumaLabel"
+                  >the amount the university would receive if it sold the
+                  mansion.</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="option"
+                  id="option4"
+                  value="option4"
+                />
+                <label for="option4" class="plumaLabel"
+                  >zero, because it was a gift.</label
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gray-200 rounded-sm py-1.5 px-3 uppercase">1 оноо</div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="text-base font-semibold pl-1">2.</div>
+          <div class="flex-1 space-y-6">
+            <p class="text-base">
+              The University recently inherited a large mansion from a wealthy
+              alumnus. The University plans to use the mansion to host faculty
+              parties and to house distinguished guests. The opportunity cost of
+              the mansion to the University is:
+            </p>
+
+            <img
+              src="https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="question"
+              class="w-full rounded-md"
+            />
+
+            <!-- Answers -->
+            <ul class="space-y-6 pl-4">
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="q2Option"
+                  id="q2Option1"
+                  value="q2Option1"
+                />
+                <label for="q2Option1" class="plumaLabel"
+                  >the cost of catering the parties at the mansion</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="q2Option"
+                  id="q2Option2"
+                  value="q2Option2"
+                />
+                <label for="q2Option2" class="plumaLabel"
+                  >the original cost of building the mansion</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="q2Option"
+                  id="q2Option3"
+                  value="q2Option3"
+                />
+                <label for="q2Option3" class="plumaLabel"
+                  >the amount the university would receive if it sold the
+                  mansion.</label
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <input
+                  class="plumaCheckbox"
+                  type="checkbox"
+                  name="q2Option"
+                  id="q2Option4"
+                  value="q2Option4"
+                />
+                <label for="q2Option4" class="plumaLabel"
+                  >zero, because it was a gift.</label
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gray-200 rounded-sm py-1.5 px-3 uppercase">1 оноо</div>
+        </div>
+      </div>
+    </main>
+
+    <header class="border-b border-gray-200 bg-white">
+      <div
+        id="modal"
+        class="hidden fixed inset-0 bg-black/50 flex items-center justify-center no-scrollbar"
+      >
+        <div
+          class="relative bg-white px-6 pt-6 pb-12 md:pt-12 rounded-lg shadow-md w-full mx-4 md:w-md"
+        >
+          <div class="w-full flex flex-col items-center gap-2">
+            <h3 class="text-xl font-bold text-center">Түр хүлээгээрэй!</h3>
+            <p class="text-text-secondary text-center">
+              Lorem ipsum dolor sit amet consectetur.
+            </p>
+            <button class="plumaPrimaryButton mt-6 w-full">Үргэлжлүүлэх</button>
+            <button
+              id="closeModal"
+              class="plumaButton border border-gray-200 mt-2 w-full"
+            >
+              Гарах
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container mx-auto px-6 flex items-center justify-end h-[100px]"
+      >
+        <button id="openModal" class="plumaPrimaryButton">Дуусгах</button>
+      </div>
+    </header>
+  </body>
+</html>

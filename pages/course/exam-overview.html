@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Нүүр хуудас</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/main.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-divider: #dce4e8;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaSearchInput {
+        @apply pr-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-primary-light placeholder:text-text-disabled text-base align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+
+      .plumaIconButton {
+        @apply size-10 rounded-lg flex items-center justify-center transition duration-200 hover:bg-black/10;
+      }
+
+      .categoryItem {
+        @apply py-2.5 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer border-b-2 flex items-center gap-2;
+      }
+
+      .activeCategoryItem {
+        @apply text-text-primary border-primary;
+      }
+
+      .inactiveCategoryItem {
+        @apply text-text-secondary border-transparent hover:text-text-primary;
+      }
+
+      .menuItem {
+        @apply py-3 px-4 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer rounded-md flex items-center gap-4;
+      }
+
+      .activeMenuItem {
+        @apply bg-primary/[8%] text-primary;
+      }
+
+      .inactiveMenuItem {
+        @apply text-text-secondary hover:bg-black/5;
+      }
+    </style>
+  </head>
+  <body onload="init('exam-overview')">
+    <!-- 1. sidebar
+    2. header -->
+
+    <div class="grid grid-cols-[280px_minmax(300px,_1fr)] h-screen">
+      <!-- sidebar -->
+      <div class="w-[280px] h-screen bg-white border-r border-gray-200">
+        <nav class="px-3 py-5">
+          <div class="px-4 pb-8 pt-5">
+            <img
+              src="../../assets/images/logo.svg"
+              alt="Pluma logo"
+              class="w-[110px] object-contain"
+            />
+          </div>
+          <ul class="flex flex-col mt-2 space-y-4">
+            <li class="menuItem activeMenuItem">
+              <img
+                src="../../assets/icons/home.svg"
+                alt="home"
+                class="size-6"
+              />
+              Нүүр хуудас
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/worksheet.svg"
+                alt="worksheet"
+                class="size-6"
+              />
+              Ажлын талбар
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/folder.svg"
+                alt="folder"
+                class="size-6"
+              />
+              Сэтгүүлчийн хавтас
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/upload-folder.svg"
+                alt="upload-folder.svg"
+                class="size-6"
+              />
+              Суурь мэдээлэл
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/search-folder.svg"
+                alt="search-folder.svg"
+                class="size-6"
+              />
+              Ажиглалтын талбар
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/settings-folder.svg"
+                alt="settings-folder.svg"
+                class="size-6"
+              />
+              Сургалт хөгжил
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/wallet.svg"
+                alt="wallet.svg"
+                class="size-6"
+              />Төлбөр тооцоо
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/inbox.svg"
+                alt="wallet.svg"
+                class="size-6"
+              />Чат
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <main>
+        <!-- header -->
+        <header
+          class="flex items-center justify-end py-6 px-10 border-b border-gray-200"
+        >
+          <div class="flex items-center gap-4">
+            <button class="plumaIconButton bg-gray-100">
+              <img
+                src="../../assets/icons/bell.svg"
+                alt="notification"
+                class="text-text-secondary size-6"
+              />
+            </button>
+            <button class="plumaIconButton bg-gray-100" id="openDrawer">
+              <img
+                src="../../assets/icons/cart.svg"
+                alt="shopping cart"
+                class="text-text-secondary size-6"
+              />
+            </button>
+
+            <div class="flex items-center gap-2">
+              <img
+                src="https://framerusercontent.com/images/gMHfU4xaMiq7jHpCpTNtqnK6ulQ.jpg"
+                alt="Author Image"
+                class="rounded-full size-10"
+              />
+              <div>
+                <div class="flex items-center gap-2">
+                  <p class="font-bold">Б.Батбаяр</p>
+                </div>
+                <p class="text-xs text-text-secondary">Админ</p>
+              </div>
+              <svg
+                class="-mr-1 ml-2 h-5 w-5 text-text-secondary cursor-pointer"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+
+            <!-- Shoping cart Drawer -->
+            <div
+              id="drawer"
+              class="fixed right-0 top-0 bottom-0 z-[100] w-full md:w-xl bg-white shadow-xl transform translate-x-full transition-transform duration-300"
+            >
+              <div class="w-full py-16 px-10 space-y-8">
+                <div class="flex justify-between items-center">
+                  <p class="text-lg font-semibold">
+                    Таны сагс
+                    <span class="text-text-secondary font-normal"
+                      >(2 хичээл)</span
+                    >
+                  </p>
+                  <button
+                    class="text-primary px-1 py-0.5 rounded-sm hover:bg-primary/10"
+                  >
+                    Цэвэрлэх
+                  </button>
+                </div>
+
+                <ul class="space-y-8">
+                  <li class="flex items-center gap-4">
+                    <input
+                      type="checkbox"
+                      class="plumaCheckbox"
+                      name="course"
+                    />
+                    <div class="flex-1 flex items-center gap-4">
+                      <img
+                        alt="news image"
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="w-[110px] object-cover rounded-md aspect-video"
+                      />
+                      <p class="text-base font-medium">
+                        Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+                      </p>
+                    </div>
+                    <div class="flex flex-col items-start">
+                      <p class="text-xl font-semibold">19.999₮</p>
+                      <p class="text-text-secondary line-through">25,000₮</p>
+                    </div>
+
+                    <button class="plumaIconButton">
+                      <img
+                        src="../../assets/icons/trash.svg"
+                        alt="trash"
+                        class="size-5"
+                      />
+                    </button>
+                  </li>
+
+                  <li class="flex items-center gap-4">
+                    <input
+                      type="checkbox"
+                      class="plumaCheckbox"
+                      name="course"
+                    />
+                    <div class="flex-1 flex items-center gap-4">
+                      <img
+                        alt="news image"
+                        src="https://images.unsplash.com/photo-1554177255-61502b352de3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="w-[110px] object-cover rounded-md aspect-video"
+                      />
+                      <p class="text-base font-medium">
+                        Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+                      </p>
+                    </div>
+                    <div class="flex flex-col items-start">
+                      <p class="text-xl font-semibold">19.999₮</p>
+                      <p class="text-text-secondary line-through">25,000₮</p>
+                    </div>
+
+                    <button class="plumaIconButton">
+                      <img
+                        src="../../assets/icons/trash.svg"
+                        alt="trash"
+                        class="size-5"
+                      />
+                    </button>
+                  </li>
+                </ul>
+                <div class="flex justify-end">
+                  <button class="plumaPrimaryButton">Төлбөх төлөх</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- content -->
+        <div class="h-[calc(100vh-90px)] overflow-y-auto">
+          <div class="p-10 max-w-7xl mx-auto">
+            <div class="space-y-6">
+              <div class="space-y-6 border-b border-gray-200 pb-6">
+                <h1 class="text-2xl font-bold">Хичээл 1-ийн сорил</h1>
+                <div class="flex items-center gap-6">
+                  <div class="flex items-center gap-1">
+                    <img
+                      alt="list"
+                      src="../../assets/icons/list.svg"
+                      class="size-5"
+                    />
+                    <span>10 асуулт</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <img
+                      alt="time"
+                      src="../../assets/icons/time.svg"
+                      class="size-[18px]"
+                    />
+                    <span>10 мин</span>
+                  </div>
+                </div>
+              </div>
+
+              <table class="w-full">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div>
+                        <p class="text-lg font-semibold">Үнэлгээ</p>
+                        <p class="text-base text-text-secondary">
+                          Үнэлгээ авах (босго оноо 80%)
+                        </p>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <p class="text-lg font-semibold">Таны авсан үнэлгээ</p>
+                        <p class="text-base text-text-secondary">-</p>
+                      </div>
+                    </td>
+                    <td class="text-end">
+                      <button class="plumaPrimaryButton">Эхлэх</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
