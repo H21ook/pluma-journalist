@@ -3,39 +3,41 @@ var scrollStep = 100;
 function initScroll() {
   var scroll = document.getElementById("categoryList");
 
-  // scroll end then right hidden button
-  var scrollWidth = scroll?.scrollWidth;
-  var clientWidth = scroll?.clientWidth;
-  var scrollLeft = scroll.scrollLeft;
+  if (scroll) {
+    // scroll end then right hidden button
+    var scrollWidth = scroll?.scrollWidth;
+    var clientWidth = scroll?.clientWidth;
+    var scrollLeft = scroll.scrollLeft;
 
-  var isEnd = scrollWidth - clientWidth === scrollLeft;
+    var isEnd = scrollWidth - clientWidth === scrollLeft;
 
-  if (scrollWidth > clientWidth) {
-    document
-      .getElementById("categoryRightButton")
-      .classList.remove("invisible", "opacity-0");
-    document
-      .getElementById("categoryRightButton")
-      .classList.add("visible", "opacity-100");
-  }
+    if (scrollWidth > clientWidth) {
+      document
+        .getElementById("categoryRightButton")
+        .classList.remove("invisible", "opacity-0");
+      document
+        .getElementById("categoryRightButton")
+        .classList.add("visible", "opacity-100");
+    }
 
-  if (isEnd) {
-    document
-      .getElementById("categoryRightButton")
-      .classList.remove("visible", "opacity-100");
-    document
-      .getElementById("categoryRightButton")
-      .classList.add("invisible", "opacity-0");
-  }
+    if (isEnd) {
+      document
+        .getElementById("categoryRightButton")
+        .classList.remove("visible", "opacity-100");
+      document
+        .getElementById("categoryRightButton")
+        .classList.add("invisible", "opacity-0");
+    }
 
-  // scroll start then left hidden button
-  if (scrollLeft === 0) {
-    document
-      .getElementById("categoryLeftButton")
-      .classList.remove("visible", "opacity-100");
-    document
-      .getElementById("categoryLeftButton")
-      .classList.add("invisible", "opacity-0");
+    // scroll start then left hidden button
+    if (scrollLeft === 0) {
+      document
+        .getElementById("categoryLeftButton")
+        .classList.remove("visible", "opacity-100");
+      document
+        .getElementById("categoryLeftButton")
+        .classList.add("invisible", "opacity-0");
+    }
   }
 }
 
@@ -183,6 +185,48 @@ function init(page) {
           document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
         }
       });
+  }
+
+  if (page === "detail") {
+    // timer hours, minutes, seconds countdown from now + 12 hours
+    var distance = 12 * 60 * 60 * 1000;
+    // 1 minut
+    // var distance = 1 * 60 * 1000;
+    var x = setInterval(function () {
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const tElement = document.getElementById("timer");
+      const hElement = document.getElementById("hours");
+      const mElement = document.getElementById("minutes");
+      const sElement = document.getElementById("seconds");
+
+      if (tElement && hElement && mElement && sElement) {
+        tElement.classList.remove("hidden");
+        // tho digits display
+        if (hours < 10) {
+          hours = "0" + hours;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+        hElement.innerHTML = hours;
+        mElement.innerHTML = minutes;
+        sElement.innerHTML = seconds;
+
+        if (distance < 0) {
+          clearInterval(x);
+          tElement.classList.add("hidden");
+        }
+        distance -= 1000;
+      }
+    }, 1000);
   }
 }
 
