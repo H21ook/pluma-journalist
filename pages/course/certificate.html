@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Нүүр хуудас</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/main.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-divider: #dce4e8;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaSearchInput {
+        @apply pr-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-primary-light placeholder:text-text-disabled text-base align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+
+      .plumaIconButton {
+        @apply size-10 rounded-lg flex items-center justify-center transition duration-200 hover:bg-black/10;
+      }
+
+      .categoryItem {
+        @apply py-2.5 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer border-b-2 flex items-center gap-2;
+      }
+
+      .activeCategoryItem {
+        @apply text-text-primary border-primary;
+      }
+
+      .inactiveCategoryItem {
+        @apply text-text-secondary border-transparent hover:text-text-primary;
+      }
+
+      .menuItem {
+        @apply py-3 px-4 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer rounded-md flex items-center gap-4;
+      }
+
+      .activeMenuItem {
+        @apply bg-primary/[8%] text-primary;
+      }
+
+      .inactiveMenuItem {
+        @apply text-text-secondary hover:bg-black/5;
+      }
+    </style>
+  </head>
+  <body onload="init('index')">
+    <header class="container mx-auto p-6">
+      <div class="flex items-center justify-between">
+        <button class="plumaIconButton bg-gray-100">
+          <img src="../../assets/icons/back.svg" alt="Back" />
+        </button>
+
+        <div class="flex gap-4">
+          <button class="plumaPrimaryButton">Share</button>
+          <button
+            class="plumaButton flex items-center gap-2 border border-gray-200"
+          >
+            <img src="../../assets/icons/download.svg" alt="Download" />
+            Download certificate
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto px-6 py-8 space-y-8">
+      <img alt="logo" src="../../assets/images/logo.svg" />
+
+      <div class="space-y-3 pb-5 border-b border-gray-100">
+        <p class="uppercase text-text-secondary">Хөтөлбөрийн батламж</p>
+        <h1 class="text-2xl font-semibold">
+          Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+        </h1>
+      </div>
+      <div class="grid grid-cols-8 gap-10">
+        <div class="col-span-5 2xl:col-span-4">
+          <img
+            alt="certificate"
+            src="https://tse1.mm.bing.net/th/id/OIP.ppCmXCsALv6TzbPW6l3_WwHaFP?rs=1&pid=ImgDetMain"
+            class="w-full rounded-xl object-cover bg-gray-100"
+          />
+        </div>
+        <div class="col-span-3 2xl:col-span-2 space-y-8">
+          <div class="space-y-4">
+            <p class="text-base font-bold">Хэнд</p>
+            <div class="flex items-center gap-4">
+              <img
+                alt="avatar"
+                src="https://framerusercontent.com/images/gMHfU4xaMiq7jHpCpTNtqnK6ulQ.jpg"
+                class="rounded-full size-10"
+              />
+              <p class="font-bold">Бат-Эрдэнэ</p>
+            </div>
+            <p>
+              Энэхүү батламжийг 2023 оны 08 дугаар сарын 11-нд олгов. Хүчинтэй
+              хугацаанд хязгаар байхгүй.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <p class="text-base font-bold">Огноо</p>
+            <div class="flex items-center gap-2">
+              <img
+                alt="calendar"
+                src="../../assets/icons/calendar.svg"
+                class="size-6"
+              />
+              <p>2025.01.20</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
