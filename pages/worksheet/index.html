@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Нүүр хуудас</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/worksheet.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-text-gray: #808080;
+        --color-divider: #dce4e8;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaSearchInput {
+        @apply pr-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-primary-light placeholder:text-text-disabled text-base align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+
+      .plumaIconButton {
+        @apply size-10 rounded-lg flex items-center justify-center transition duration-200 hover:bg-black/10;
+      }
+
+      .categoryItem {
+        @apply py-2.5 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer border-b-2 flex items-center gap-2;
+      }
+
+      .activeCategoryItem {
+        @apply text-text-primary border-primary;
+      }
+
+      .inactiveCategoryItem {
+        @apply text-text-secondary border-transparent hover:text-text-primary;
+      }
+
+      .menuItem {
+        @apply py-3 px-4 transition-all duration-200 text-base whitespace-nowrap font-semibold cursor-pointer rounded-md flex items-center gap-4;
+      }
+
+      .activeMenuItem {
+        @apply bg-primary/[8%] text-primary;
+      }
+
+      .inactiveMenuItem {
+        @apply text-text-secondary hover:bg-black/5;
+      }
+    </style>
+  </head>
+  <body onload="init('index')">
+    <!-- 1. sidebar
+    2. header -->
+
+    <div class="grid grid-cols-[280px_minmax(300px,_1fr)] h-screen">
+      <!-- sidebar -->
+      <div class="w-[280px] h-screen bg-white border-r border-gray-200">
+        <nav class="px-3 py-5">
+          <div class="px-4 pb-8 pt-5">
+            <img
+              src="../../assets/images/logo.svg"
+              alt="Pluma logo"
+              class="w-[110px] object-contain"
+            />
+          </div>
+          <ul class="flex flex-col mt-2 space-y-4">
+            <li class="menuItem activeMenuItem">
+              <img
+                src="../../assets/icons/home.svg"
+                alt="home"
+                class="size-6"
+              />
+              Нүүр хуудас
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/worksheet.svg"
+                alt="worksheet"
+                class="size-6"
+              />
+              Ажлын талбар
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/folder.svg"
+                alt="folder"
+                class="size-6"
+              />
+              Сэтгүүлчийн хавтас
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/upload-folder.svg"
+                alt="upload-folder.svg"
+                class="size-6"
+              />
+              Суурь мэдээлэл
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/search-folder.svg"
+                alt="search-folder.svg"
+                class="size-6"
+              />
+              Ажиглалтын талбар
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/settings-folder.svg"
+                alt="settings-folder.svg"
+                class="size-6"
+              />
+              Сургалт хөгжил
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/wallet.svg"
+                alt="wallet.svg"
+                class="size-6"
+              />Төлбөр тооцоо
+            </li>
+            <li class="menuItem inactiveMenuItem">
+              <img
+                src="../../assets/icons/inbox.svg"
+                alt="wallet.svg"
+                class="size-6"
+              />Чат
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <main class="h-full overflow-y-auto">
+        <!-- content -->
+        <div class="flex items-center justify-between px-10 mt-16">
+          <div>
+            <h1 class="text-2xl font-bold mb-2">Нийтлэл</h1>
+            <div class="flex gap-4 items-center">
+              <p>Dashboard</p>
+              <img
+                src="../../assets/icons/arrow-right.svg"
+                alt="arrow-right"
+                class="size-4"
+              />
+              <p class="text-text-secondary">Link</p>
+            </div>
+          </div>
+          <button
+            class="plumaPrimaryButton flex items-center justify-center gap-1"
+          >
+            <img src="../../assets/icons/pen.svg" alt="pen" class="size-4" />
+            Бичиж эхлэх
+          </button>
+        </div>
+
+        <div>
+          <div class="p-10 max-w-[1600px] mx-auto">
+            <div class="space-y-6">
+              <!-- Category list -->
+              <div class="flex items-center justify-between gap-8">
+                <div class="relative">
+                  <ul
+                    class="flex gap-8 overflow-hidden items-center"
+                    id="categoryList"
+                  >
+                    <li
+                      class="categoryItem activeCategoryItem"
+                      onclick="selectCategory(event)"
+                    >
+                      Нийтэлсэн
+                      <div
+                        class="flex items-center justify-center size-5 rounded-md bg-gray-200 text-xs font-semibold"
+                      >
+                        1
+                      </div>
+                    </li>
+                    <li
+                      class="categoryItem inactiveCategoryItem"
+                      onclick="selectCategory(event)"
+                    >
+                      Ноорог
+                    </li>
+                    <li
+                      class="categoryItem inactiveCategoryItem"
+                      onclick="selectCategory(event)"
+                    >
+                      Хуваарьт төлөвлөсөн
+                    </li>
+                  </ul>
+                </div>
+                <div class="flex justify-end">
+                  <div class="relative z-0 lg:max-w-[300px] w-full">
+                    <div
+                      class="absolute z-[-1] rounded-md bg-gray-100 flex items-center size-full pl-4"
+                    >
+                      <img
+                        src="../../assets/icons/search.svg"
+                        alt="search"
+                        class="size-5"
+                      />
+                    </div>
+                    <input
+                      class="plumaSearchInput w-full pl-12 bg-transparent"
+                      type="text"
+                      placeholder="Хайх"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full h-px bg-gray-200 my-4"></div>
+              <!-- Content -->
+              <div>
+                <ul>
+                  <li
+                    class="flex items-center justify-between gap-8 border-b border-gray-200 py-6"
+                  >
+                    <div class="flex items-center gap-4">
+                      <img
+                        src="https://placehold.co/60"
+                        alt="image"
+                        class="rounded-md size-15"
+                      />
+                      <div>
+                        <h2 class="font-bold">
+                          Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+                        </h2>
+                        <p class="text-xs text-text-secondary my-0.5">
+                          By Bilgudee
+                        </p>
+                        <div
+                          class="text-text-secondary flex items-center gap-4"
+                        >
+                          <span
+                            class="text-xs uppercase text-text-gray font-medium"
+                            >1:12 PM</span
+                          >
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="like-line"
+                              src="../../assets/icons/like-line.svg"
+                              class="size-3.5"
+                            />
+                            <span>13</span>
+                          </div>
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="chat"
+                              src="../../assets/icons/chat.svg"
+                              class="size-3.5"
+                            />
+                            <span>0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center gap-8">
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            Нээсэн
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            үзэлт
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            шинэ дагагчид
+                          </p>
+                        </div>
+                      </div>
+                      <button class="plumaIconButton border border-gray-200">
+                        <img
+                          src="../../assets/icons/arrow-up-right.svg"
+                          alt="arrow-up-right"
+                          class="size-4"
+                        />
+                      </button>
+                      <div class="dropdownItem relative inline-block text-left">
+                        <button class="toggleDropdown plumaIconButton">
+                          <img
+                            src="../../assets/icons/more-horizontal.svg"
+                            alt="more-horizontal.svg"
+                            class="size-4"
+                          />
+                        </button>
+                        <div
+                          class="dropdownMenu origin-top-right absolute right-0 mt-2 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 hidden"
+                        >
+                          <div
+                            class="p-2"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="dropdownButton"
+                          >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Үзэлт</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Засварлах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Хувилах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Устгах</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center justify-between gap-8 border-b border-gray-200 py-6"
+                  >
+                    <div class="flex items-center gap-4">
+                      <img
+                        src="https://placehold.co/60"
+                        alt="image"
+                        class="rounded-md size-15"
+                      />
+                      <div>
+                        <h2 class="font-bold">
+                          Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+                        </h2>
+                        <p class="text-xs text-text-secondary my-0.5">
+                          By Bilgudee
+                        </p>
+                        <div
+                          class="text-text-secondary flex items-center gap-4"
+                        >
+                          <span
+                            class="text-xs uppercase text-text-gray font-medium"
+                            >1:12 PM</span
+                          >
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="like-line"
+                              src="../../assets/icons/like-line.svg"
+                              class="size-3.5"
+                            />
+                            <span>13</span>
+                          </div>
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="chat"
+                              src="../../assets/icons/chat.svg"
+                              class="size-3.5"
+                            />
+                            <span>0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center gap-8">
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            Нээсэн
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            үзэлт
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            шинэ дагагчид
+                          </p>
+                        </div>
+                      </div>
+                      <button class="plumaIconButton border border-gray-200">
+                        <img
+                          src="../../assets/icons/arrow-up-right.svg"
+                          alt="arrow-up-right"
+                          class="size-4"
+                        />
+                      </button>
+                      <div class="dropdownItem relative inline-block text-left">
+                        <button class="toggleDropdown plumaIconButton">
+                          <img
+                            src="../../assets/icons/more-horizontal.svg"
+                            alt="more-horizontal.svg"
+                            class="size-4"
+                          />
+                        </button>
+                        <div
+                          class="dropdownMenu origin-top-right absolute right-0 mt-2 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 hidden"
+                        >
+                          <div
+                            class="p-2"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="dropdownButton"
+                          >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Үзэлт</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Засварлах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Хувилах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Устгах</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center justify-between gap-8 border-b border-gray-200 py-6"
+                  >
+                    <div class="flex items-center gap-4">
+                      <img
+                        src="https://placehold.co/60"
+                        alt="image"
+                        class="rounded-md size-15"
+                      />
+                      <div>
+                        <h2 class="font-bold">
+                          Цахим сэтгүүл зүй ба мэргэжлийн ёс зүй
+                        </h2>
+                        <p class="text-xs text-text-secondary my-0.5">
+                          By Bilgudee
+                        </p>
+                        <div
+                          class="text-text-secondary flex items-center gap-4"
+                        >
+                          <span
+                            class="text-xs uppercase text-text-gray font-medium"
+                            >1:12 PM</span
+                          >
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="like-line"
+                              src="../../assets/icons/like-line.svg"
+                              class="size-3.5"
+                            />
+                            <span>13</span>
+                          </div>
+                          <div class="flex items-center gap-1">
+                            <img
+                              alt="chat"
+                              src="../../assets/icons/chat.svg"
+                              class="size-3.5"
+                            />
+                            <span>0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center gap-8">
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            Нээсэн
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            үзэлт
+                          </p>
+                        </div>
+                        <div>
+                          <p class="font-bold mb-2">N/A</p>
+                          <p class="text-[11px] text-text-secondary uppercase">
+                            шинэ дагагчид
+                          </p>
+                        </div>
+                      </div>
+                      <button class="plumaIconButton border border-gray-200">
+                        <img
+                          src="../../assets/icons/arrow-up-right.svg"
+                          alt="arrow-up-right"
+                          class="size-4"
+                        />
+                      </button>
+                      <div class="dropdownItem relative inline-block text-left">
+                        <button class="toggleDropdown plumaIconButton">
+                          <img
+                            src="../../assets/icons/more-horizontal.svg"
+                            alt="more-horizontal.svg"
+                            class="size-4"
+                          />
+                        </button>
+                        <div
+                          class="dropdownMenu origin-top-right absolute right-0 mt-2 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 hidden"
+                        >
+                          <div
+                            class="p-2"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="dropdownButton"
+                          >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Үзэлт</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Засварлах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Хувилах</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-3 py-2 hover:bg-gray-100"
+                              role="menuitem"
+                              >Устгах</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="flex items-center justify-end gap-2 mt-6">
+                  <button class="p-2 hover:bg-gray-200 rounded-md">
+                    <img
+                      src="../../assets/icons/chevron-left.svg"
+                      alt="chevron-left"
+                      class="size-4"
+                    />
+                  </button>
+                  <div
+                    class="border border-gray-200 text-base font-medium rounded-md px-3.5 py-2"
+                  >
+                    1
+                  </div>
+                  <span class="text-base font-medium">of 3</span>
+                  <button class="p-2 hover:bg-gray-200 rounded-md">
+                    <img
+                      src="../../assets/icons/chevron-right.svg"
+                      alt="chevron-right"
+                      class="size-4"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
