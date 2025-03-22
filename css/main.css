@@ -29,3 +29,116 @@
   border-color: #4299e1;
   box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
 }
+
+.plumaRadio {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Сонгогдсон үед загвар */
+.plumaRadio:checked {
+  border-color: #f8a698;
+  background-color: #f8a698;
+}
+
+/* Сонгогдсон үед дотрын цэг */
+.plumaRadio:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.xdsoft_datetimepicker {
+  border-radius: 6px;
+  border-color: #e5e7eb;
+  font-family: "Manrope", sans-serif;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar th {
+  background-color: white;
+  color: #212b36;
+  font-weight: 700;
+}
+.xdsoft_datetimepicker .xdsoft_calendar td {
+  background-color: white;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_other_month,
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_disabled,
+.xdsoft_datetimepicker .xdsoft_time_box > div > div.xdsoft_disabled {
+  color: #637381;
+  opacity: 1;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td,
+.xdsoft_datetimepicker .xdsoft_calendar th {
+  border: none;
+  color: #212b36;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td:hover,
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div:hover {
+  background: #f8a69833 !important;
+  border-radius: 4px;
+  color: #f8a698 !important;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_default,
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_current,
+.xdsoft_datetimepicker
+  .xdsoft_timepicker
+  .xdsoft_time_box
+  > div
+  > div.xdsoft_current {
+  background: #f8a698 !important;
+  border-radius: 4px;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_today {
+  color: #f8a698;
+}
+
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box {
+  border-radius: 6px;
+}
+
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div {
+  border: none;
+  background-color: white;
+}
+
+/* month, year select color */
+.xdsoft_datetimepicker
+  .xdsoft_label
+  > .xdsoft_select
+  > div
+  > .xdsoft_option.xdsoft_current {
+  box-shadow: none;
+  background-color: #f8a698;
+}
+
+.xdsoft_datetimepicker
+  .xdsoft_label
+  > .xdsoft_select
+  > div
+  > .xdsoft_option:hover {
+  background: #f8a69833;
+  color: #f8a698;
+  box-shadow: none;
+}

@@ -162,8 +162,6 @@ function init(page) {
     // document
     //   .getElementById("categoryLeftButton")
     //   .addEventListener("click", leftScroll);
-
-    var dropdown = document.getElementById("dropdownButton");
     var dropDownList = document.querySelectorAll(".toggleDropdown");
 
     if (dropDownList && dropDownList?.length > 0) {
@@ -188,56 +186,35 @@ function init(page) {
         }
       });
     }
-
-    if (dropdown) {
-      document
-        .getElementById("dropdownButton")
-        .addEventListener("click", function () {
-          const dropdownMenu = document.getElementById("dropdownMenu");
-          dropdownMenu.classList.toggle("hidden");
-        });
-
-      // Dropdown-ийн гадна дарж хаах
-      document.addEventListener("click", function (event) {
-        const dropdownButton = document.getElementById("dropdownButton");
-        const dropdownMenu = document.getElementById("dropdownMenu");
-        if (
-          !dropdownButton.contains(event.target) &&
-          !dropdownMenu.contains(event.target)
-        ) {
-          dropdownMenu.classList.add("hidden");
-        }
-      });
-    }
   }
 
-  //   if (page === "payment" || page === "exam-detail") {
-  //     // Dialog нээх товч
-  //     document.getElementById("openModal").addEventListener("click", function () {
-  //       const dialog = document.getElementById("modal");
-  //       dialog.classList.remove("hidden"); // Dialog нээх
-  //       document.body.style.overflow = "hidden"; // Body scroll-ыг нуух
-  //     });
+  var dropdown = document.getElementById("dropdownButton");
+  if (dropdown) {
+    document
+      .getElementById("dropdownButton")
+      .addEventListener("click", function () {
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        dropdownMenu.classList.toggle("hidden");
+      });
 
-  //     // Dialog хаах товч
-  //     document
-  //       .getElementById("closeModal")
-  //       .addEventListener("click", function () {
-  //         const dialog = document.getElementById("modal");
-  //         dialog.classList.add("hidden"); // Dialog хаах
-  //         document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
-  //       });
+    // Dropdown-ийн гадна дарж хаах
+    document.addEventListener("click", function (event) {
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      if (
+        !dropdownButton.contains(event.target) &&
+        !dropdownMenu.contains(event.target)
+      ) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+  }
 
-  //     // Dialog-ийн гадна дарж хаах
-  //     document
-  //       .getElementById("modal")
-  //       .addEventListener("click", function (event) {
-  //         if (event.target.id === "modal") {
-  //           event.target?.classList?.add("hidden"); // Dialog хаах
-  //           document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
-  //         }
-  //       });
-  //   }
+  jQuery("#datetimepicker").datetimepicker({
+    format: "Y-m-d H:i",
+    lang: "mn",
+    step: 5,
+  });
 }
 
 window.addEventListener("resize", initScroll);

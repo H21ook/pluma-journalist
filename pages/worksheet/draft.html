@@ -178,7 +178,7 @@
 
       <main class="h-full overflow-y-auto">
         <!-- content -->
-        <div class="px-10 mt-16">
+        <div class="px-10 mt-12 border-b border-gray-200 py-3">
           <!-- <div> -->
           <div class="w-full flex items-center justify-between gap-4">
             <div class="flex items-center gap-2">
@@ -341,15 +341,73 @@
                       />
                     </button>
                   </div>
-                  <button
-                    class="border border-gray-200 bg-gray-100 rounded-full transition-all duration-200 flex items-center justify-center hover:bg-black/10 size-10"
-                  >
-                    <img
-                      alt="add"
-                      src="../../assets/icons/plus.svg"
-                      class="size-5"
-                    />
-                  </button>
+                  <div class="relative inline-block text-left">
+                    <button
+                      id="dropdownButton"
+                      class="border border-gray-200 bg-gray-100 rounded-full transition-all duration-200 flex items-center justify-center hover:bg-black/10 size-10"
+                    >
+                      <img
+                        alt="add"
+                        src="../../assets/icons/plus.svg"
+                        class="size-5"
+                      />
+                    </button>
+                    <div
+                      id="dropdownMenu"
+                      class="origin-top-left absolute left-0 mt-2 z-10 w-2xs rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 hidden"
+                    >
+                      <div
+                        class="p-4"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="dropdownButton"
+                      >
+                        <p class="text-base font-semibold">
+                          Зочин нийтлэгч нэмэх
+                        </p>
+                        <p class="text-text-secondary font-light mb-1">
+                          Нийтлэлийг хамтран бэлтгэсэн үү? Хамтарсан нийтлэлчдээ
+                          жагсааж бичээрэй. Бид цахим шуудангаар нь мэдэгдэл
+                          хүргүүлэх болно.
+                        </p>
+
+                        <input
+                          class="plumaInput my-4 w-full"
+                          type="text"
+                          placeholder="Нэр эсвэл и-мэйлээр хайх"
+                        />
+
+                        <ul class="border-t border-gray-200 pt-4 space-y-1">
+                          <li
+                            class="flex items-center gap-2 p-2 rounded-md transition-all duration-200 hover:bg-black/5"
+                          >
+                            <img
+                              alt="avatar"
+                              src="https://framerusercontent.com/images/gMHfU4xaMiq7jHpCpTNtqnK6ulQ.jpg"
+                              class="size-6 rounded-full"
+                            />
+                            <div class="flex gap-4">
+                              <p>Бат-Эрдэнэ</p>
+                              <span class="text-text-secondary">@baagii</span>
+                            </div>
+                          </li>
+                          <li
+                            class="flex items-center gap-2 p-2 rounded-md transition-all duration-200 hover:bg-black/5"
+                          >
+                            <img
+                              alt="avatar"
+                              src="https://framerusercontent.com/images/gMHfU4xaMiq7jHpCpTNtqnK6ulQ.jpg"
+                              class="size-6 rounded-full"
+                            />
+                            <div class="flex gap-4">
+                              <p>Үүлс</p>
+                              <span class="text-text-secondary">@uuls43</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div id="editor" class="mt-10!"></div>
               </div>
