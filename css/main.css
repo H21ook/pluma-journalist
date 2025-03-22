@@ -1,3 +1,12 @@
+:root {
+  --fc-button-bg-color: #ffffff;
+  --fc-button-border-color: #ffffff;
+  --fc-button-text-color: #637381;
+  --fc-button-hover-bg-color: #0000000a;
+  --fc-button-hover-border-color: #00000000;
+  --fc-button-active-bg-color: #0000000a;
+  --fc-button-active-border-color: #00000000;
+}
 .ql-container {
   border: 0px solid black !important;
   background-color: white;
@@ -141,4 +150,37 @@
   background: #f8a69833;
   color: #f8a698;
   box-shadow: none;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  padding: 0 20px;
+}
+
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fc-toolbar-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+.fc-col-header-cell-cushion {
+  color: #212b36;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: #e5e7eb;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled):active:focus,
+.fc .fc-button-primary:focus {
+  box-shadow: none;
+}
+
+.fc .fc-button-primary {
+  border-radius: 6px;
 }
