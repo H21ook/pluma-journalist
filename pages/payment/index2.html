@@ -313,37 +313,182 @@
                         <div
                           class="relative bg-white px-6 pt-6 pb-12 rounded-lg shadow-md w-full mx-4 md:w-md"
                         >
-                          <div class="flex justify-end mb-2">
-                            <button
-                              id="closeModal"
-                              class="plumaIconButton bg-gray-100"
-                            >
-                              <img
-                                src="../../assets/icons/close.svg"
-                                class="size-5"
-                                alt="close"
-                              />
-                            </button>
+                          <div class="mb-6">
+                            <h1 class="text-medium font-semibold">
+                              Данс холбох
+                            </h1>
+                            <p class="text-text-secondary">
+                              Та өөрийн дансны мэдээлэлээ оруулна уу
+                            </p>
                           </div>
-                          <div class="w-full flex flex-col items-center gap-6">
-                            <img
-                              src="../../assets/images/qpay.png"
-                              alt="qpay"
-                              class="w-auto h-9 object-contain"
-                            />
-                            <div class="p-6 rounded-3xl border border-gray-200">
-                              <img
-                                src="../../assets/images/qrcode.png"
-                                alt="qrcode"
-                                class="w-[200px] object-contain"
+                          <div class="space-y-8 my-2">
+                            <!-- Select  -->
+                            <div
+                              class="select relative inline-block text-left w-full"
+                            >
+                              <label
+                                for="bank"
+                                class="text-xs text-text-disabled absolute px-1 bg-white -top-2 left-2"
+                                >Банк</label
+                              >
+                              <button
+                                id="bank"
+                                type="button"
+                                class="selectButton rounded-md min-h-14 border border-text-disabled flex items-center gap-2 w-full pr-4"
+                              >
+                                <div
+                                  class="selectTitle text-start flex-1 truncate min-w-[80px]"
+                                >
+                                  <span class="ml-4">Банк сонгох</span>
+                                </div>
+                                <img
+                                  src="../../assets/icons/arrow-right.svg"
+                                  alt="arrow-right"
+                                  class="size-4 rotate-90 -mr-1"
+                                />
+                              </button>
+
+                              <div
+                                class="selectMenu origin-top-right absolute left-0 right-0 mt-2 z-10 min-w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 p-2 hidden max-h-[180px] overflow-y-auto"
+                              >
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="khanbank"
+                                      src="../../assets/icons//bank/khanbank.svg"
+                                      class="size-6"
+                                    />
+                                    Хаан банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="hasbank"
+                                      src="../../assets/icons//bank/hasbank.svg"
+                                      class="size-6"
+                                    />
+                                    Хас банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="golomt"
+                                      src="../../assets/icons//bank/golomt.svg"
+                                      class="size-6"
+                                    />
+                                    Голомт банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="tdb"
+                                      src="../../assets/icons//bank/tdb.svg"
+                                      class="size-6"
+                                    />
+                                    Худалдаа хөгжлийн банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="arig"
+                                      src="../../assets/icons//bank/arig.svg"
+                                      class="size-6"
+                                    />
+                                    Ариг банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="statebank"
+                                      src="../../assets/icons//bank/statebank.svg"
+                                      class="size-6"
+                                    />
+                                    Төрийн банк
+                                  </div>
+                                </div>
+                                <div
+                                  class="block cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div
+                                    class="flex items-center gap-2 text-base py-2 px-3"
+                                  >
+                                    <img
+                                      alt="mbank"
+                                      src="../../assets/icons//bank/mbank.svg"
+                                      class="size-6"
+                                    />
+                                    М банк
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="relative">
+                              <label
+                                for="accountNumber"
+                                class="text-xs text-text-disabled absolute px-1 bg-white -top-2 left-2"
+                                >Дансны дугаар</label
+                              >
+                              <input
+                                id="accountNumber"
+                                type="text"
+                                class="w-full transition-all duration-200 focus:outline-none focus:border-primary border border-text-disabled rounded-md px-3 py-4 rounded-lg text-base placeholder:text-base placeholder:text-text-secondary"
+                                placeholder="Дансны дугаар"
                               />
                             </div>
-                            <p
-                              class="text-base text-text-secondary w-full text-center"
+
+                            <div class="relative">
+                              <label
+                                for="accountName"
+                                class="text-xs text-text-disabled absolute px-1 bg-white -top-2 left-2"
+                                >Данс эзэмшигчийн нэр</label
+                              >
+                              <input
+                                id="accountName"
+                                type="text"
+                                class="w-full transition-all duration-200 focus:outline-none focus:border-primary border border-text-disabled rounded-md px-3 py-4 rounded-lg text-base placeholder:text-base placeholder:text-text-secondary"
+                                placeholder="Данс эзэмшигчийн нэр"
+                              />
+                            </div>
+                          </div>
+
+                          <div class="flex items-center justify-end">
+                            <button
+                              id="closeModal"
+                              class="plumaButton border border-gray-200"
                             >
-                              Та QR кодыг өөрийн интернет банкны аппликейшн
-                              ашиглан уншуулж төлбөрөө төлөөрэй.
-                            </p>
+                              Болих
+                            </button>
+                            <button class="plumaPrimaryButton">Холбох</button>
                           </div>
                         </div>
                       </div>

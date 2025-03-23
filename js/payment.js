@@ -53,7 +53,7 @@ function init(page) {
       }
 
       // Dialog хаах товч
-      if (dialogOpenButton) {
+      if (dialogCloseButton) {
         dialogCloseButton.addEventListener("click", function () {
           dialog.classList.add("hidden"); // Dialog хаах
           document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
@@ -64,6 +64,48 @@ function init(page) {
         if (event.target.id === "modal") {
           event.target?.classList?.add("hidden"); // Dialog хаах
           document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
+        }
+      });
+    }
+
+    // select
+
+    const selectList = document.querySelectorAll(".select");
+
+    if (selectList?.length > 0) {
+      selectList.forEach((select) => {
+        const selectButton = select.querySelector(".selectButton");
+        const selectMenu = select.querySelector(".selectMenu");
+
+        if (selectMenu) {
+          const selectItems = selectMenu.children;
+
+          selectButton.addEventListener("click", function () {
+            selectMenu.classList.toggle("hidden");
+          });
+
+          const selectTitle = selectButton.querySelector(".selectTitle");
+          if (selectItems) {
+            for (let i = 0; i < selectItems.length; i++) {
+              const item = selectItems[i];
+              console.log("iotem", selectTitle);
+              item.addEventListener("click", function (event) {
+                console.log(event.target?.outerHTML);
+                selectTitle.innerHTML = event.target?.outerHTML;
+                selectMenu.classList.add("hidden");
+              });
+            }
+          }
+
+          document.addEventListener("click", function (event) {
+            console.log(event.target);
+            if (
+              !selectButton.contains(event.target) &&
+              !selectMenu.contains(event.target)
+            ) {
+              selectMenu.classList.add("hidden");
+            }
+          });
         }
       });
     }
