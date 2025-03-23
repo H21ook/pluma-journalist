@@ -147,6 +147,33 @@ function init(page) {
   }
 
   if (page === "index") {
+    var dropDownList = document.querySelectorAll(".toggleDropdown");
+
+    if (dropDownList && dropDownList?.length > 0) {
+      dropDownList.forEach((button) => {
+        button.addEventListener("click", function () {
+          const dropdownMenu =
+            this.closest(".dropdownItem").querySelector(".dropdownMenu");
+
+          document.querySelectorAll(".dropdownMenu").forEach((d) => {
+            if (d !== dropdownMenu) d.classList.add("hidden");
+          });
+          dropdownMenu.classList.toggle("hidden");
+        });
+      });
+
+      // Dropdown-ийн гадна дарж хаах
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".dropdownItem")) {
+          document.querySelectorAll(".dropdownMenu").forEach((dropdown) => {
+            dropdown.classList.add("hidden");
+          });
+        }
+      });
+    }
+  }
+
+  if (page === "detail") {
     const ctx = document.getElementById("myChart").getContext("2d");
 
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
@@ -157,22 +184,140 @@ function init(page) {
       type: "line",
       data: {
         labels: [
-          "1цаг",
-          "2цаг",
-          "3цаг",
-          "4цаг",
-          "5цаг",
-          "6цаг",
-          "7цаг",
-          "8цаг",
-          "9цаг",
-          "10цаг",
-          "11цаг",
+          "1сар",
+          "2сар",
+          "3сар",
+          "4сар",
+          "5сар",
+          "6сар",
+          "7сар",
+          "8сар",
+          "9сар",
+          "10сар",
+          "11сар",
+          "12сар",
         ],
         datasets: [
           {
             label: "Page Views",
-            data: [12, 50, 60, 34, 100, 55, 30, 50, 60, 65, 40],
+            data: [
+              120000, 500000, 600000, 340000, 1000000, 550000, 300000, 500000,
+              600000, 650000, 400000, 300000,
+            ],
+            backgroundColor: gradient,
+            borderColor: "#f8a698",
+            borderWidth: 2,
+            fill: "start",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            padding: {
+              left: 10,
+              top: 8,
+              right: 10,
+              bottom: 8,
+            },
+            backgroundColor: "#111827",
+            titleColor: "#919EAB",
+            titleFont: {
+              size: 14,
+              weight: 500,
+            },
+            bodyColor: "#ffffff",
+            boxHeight: 8,
+            boxWidth: 8,
+            boxPadding: 4,
+            bodyFont: {
+              size: 12,
+              weight: 500,
+              lineHeight: 1.2,
+            },
+            labelColors: {},
+            callbacks: {
+              labelColor: function (context) {
+                return {
+                  backgroundColor: "#F8A698",
+                  borderColor: "#F8A698",
+                  borderWidth: 5,
+                  borderRadius: 4,
+                };
+              },
+              label: function (tooltipItem, data) {
+                return tooltipItem.formattedValue;
+              },
+            },
+          },
+        },
+
+        tension: 0.3,
+        responsive: true,
+        scales: {
+          y: {
+            ticks: {
+              color: "#637381",
+              font: {
+                size: 12, // 'size' now within object 'font {}'
+              },
+            },
+            grid: {
+              display: false, // Hide grid lines on x-axis
+            },
+            beginAtZero: true,
+          },
+          x: {
+            grid: {
+              display: false, // Hide grid lines on x-axis
+            },
+            ticks: {
+              color: "#637381",
+              font: {
+                size: 12, // 'size' now within object 'font {}'
+              },
+            },
+          },
+        },
+        layout: {
+          padding: 0,
+        },
+      },
+    });
+
+    const ctx2 = document.getElementById("myChart2").getContext("2d");
+
+    const gradient2 = ctx2.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, "rgba(248, 166, 152, 0.6)");
+    gradient.addColorStop(1, "rgba(255,255,255, 0)");
+
+    let myChart2 = new Chart(ctx2, {
+      type: "line",
+      data: {
+        labels: [
+          "1сар",
+          "2сар",
+          "3сар",
+          "4сар",
+          "5сар",
+          "6сар",
+          "7сар",
+          "8сар",
+          "9сар",
+          "10сар",
+          "11сар",
+          "12сар",
+        ],
+        datasets: [
+          {
+            label: "Page Views",
+            data: [
+              120000, 500000, 600000, 340000, 1000000, 550000, 300000, 500000,
+              600000, 650000, 400000, 300000,
+            ],
             backgroundColor: gradient,
             borderColor: "#f8a698",
             borderWidth: 2,

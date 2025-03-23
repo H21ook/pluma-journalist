@@ -237,17 +237,15 @@
                     />
                     Export CSV
                   </button>
-                  <div class="relative inline-block text-left">
+                  <div class="select relative inline-block text-left">
                     <button
-                      id="selectButton"
                       type="button"
-                      class="plumaButton border border-gray-200 flex items-center gap-2"
+                      class="selectButton h-10 pr-4 border border-gray-200 rounded-md flex items-center gap-2"
                     >
                       <div
-                        id="selectTitle"
-                        class="text-start flex-1 truncate min-w-[80px]"
+                        class="selectTitle text-start flex-1 truncate min-w-[80px]"
                       >
-                        Last 24h
+                        <span class="ml-4">Last 24 hours</span>
                       </div>
                       <img
                         src="../../assets/icons/arrow-right.svg"
@@ -257,27 +255,57 @@
                     </button>
 
                     <div
-                      id="selectMenu"
-                      class="origin-top-right absolute right-0 mt-2 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 p-2 hidden"
+                      class="selectMenu origin-top-right absolute right-0 mt-2 z-10 min-w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-200 ring-opacity-5 p-2 hidden max-h-[180px] overflow-y-auto"
                     >
-                      <a
-                        href="#"
-                        class="block px-3 py-2 hover:bg-gray-100"
-                        role="menuitem"
-                        >Copy link</a
-                      >
-                      <a
-                        href="#"
-                        class="block px-3 py-2 hover:bg-gray-100"
-                        role="menuitem"
-                        >Save</a
-                      >
-                      <a
-                        href="#"
-                        class="block px-3 py-2 hover:bg-gray-100"
-                        role="menuitem"
-                        >Report</a
-                      >
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          All time
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Last 24 hours
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Last 7 days
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Last month
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Last 3 months
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Quarter
+                        </div>
+                      </div>
+                      <div class="block cursor-pointer hover:bg-gray-100">
+                        <div
+                          class="flex items-center gap-2 text-base py-2 px-3"
+                        >
+                          Year
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
