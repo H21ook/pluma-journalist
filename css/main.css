@@ -184,3 +184,87 @@
 .fc .fc-button-primary {
   border-radius: 6px;
 }
+
+/* Datepicker-ийн style */
+
+.qs-datepicker-container {
+  border: none;
+  transform: translateY(12px);
+}
+
+/* Overlay */
+.qs-overlay-month-container {
+  margin: 8px 0;
+}
+.qs-overlay-year:focus {
+  outline: none;
+}
+
+.qs-overlay .qs-overlay-month {
+  color: white;
+  font-size: 12px;
+  opacity: 1;
+  border-radius: 4px;
+}
+.qs-overlay .qs-overlay-month:hover {
+  background-color: #ffffff44;
+}
+.qs-overlay .qs-submit {
+  padding: 4px 16px;
+  font-size: 12px;
+}
+.qs-datepicker {
+  border: 1px solid #ebe6e7;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Удирдлагын хэсэг (сар, жил сонгох) */
+.qs-controls {
+  background-color: #f8a698;
+  color: white;
+  padding: 4px;
+  border-radius: 6px 6px 0 0;
+}
+
+.qs-month-year {
+  font-size: 14px;
+}
+/* Өдрүүдийг харуулах хэсэг */
+.qs-squares {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+/* Өдөр бүрийн элемент */
+.qs-square {
+  color: #212b36;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
+  background-color: #ebe6e7;
+}
+/* Сонгогдсон өдөр */
+.qs-active {
+  background-color: #f8a698;
+  color: white;
+}
+
+/* Одоогийн өдөр */
+.qs-current {
+  font-weight: bold;
+  color: #f8a698;
+  text-decoration: none;
+}
+
+.qs-overlay {
+  background-color: #f8a698;
+  color: white;
+}
