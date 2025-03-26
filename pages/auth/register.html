@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Бүртгүүлэх</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/auth.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-divider: #dce4e8;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+
+      .plumaIconButton {
+        @apply size-10 rounded-lg flex items-center justify-center transition duration-200 hover:bg-black/10;
+      }
+    </style>
+  </head>
+  <body class="h-screen">
+    <header
+      class="sticky z-[1] top-0 left-0 w-full h-16 lg:hidden px-6 flex items-center justify-between bg-white"
+    >
+      <img src="../../assets/images/header-logo.svg" alt="logo" class="h-7" />
+      <div class="flex items-center gap-2.5">
+        <button class="plumaIconButton bg-gray-100">
+          <img
+            src="../../assets/icons/bell.svg"
+            alt="notification"
+            class="text-text-secondary size-6"
+          />
+        </button>
+        <button class="plumaIconButton bg-gray-100">
+          <img
+            src="../../assets/icons/menu.svg"
+            alt="menu"
+            class="text-text-secondary size-6"
+          />
+        </button>
+      </div>
+    </header>
+
+    <div class="h-[calc(100vh-64px)] lg:size-full flex flex-col lg:flex-row">
+      <!-- Left side with background image and logo -->
+      <div
+        class="hidden lg:block lg:w-1/2 xl:w-2/5 relative overflow-hidden leftSideBackground"
+      >
+        <div
+          class="relative h-full flex items-center justify-center bg-[#D5938ACC]"
+        >
+          <img
+            src="../../assets/images/logo.png"
+            alt="Pluma logo"
+            class="w-1/2 object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Right side with login form -->
+      <div
+        class="relative size-full lg:w-1/2 xl:w-3/5 flex lg:items-center justify-center p-6"
+      >
+        <div
+          class="hidden lg:block absolute top-0 right-0 mt-14 mr-20 flex justify-end"
+        >
+          <a
+            href="/journalist/pages/auth/login.html"
+            class="text-text-primary font-bold text-base ml-4 hover:underline"
+            >Бүртгэлтэй хаягаар нэвтрэх</a
+          >
+        </div>
+        <div class="w-full max-w-sm space-y-6 lg:space-y-10">
+          <div class="lg:hidden">
+            <button class="plumaIconButton bg-gray-100">
+              <img
+                src="../../assets/icons/back.svg"
+                alt="back"
+                class="size-5"
+              />
+            </button>
+          </div>
+
+          <div>
+            <div data-tab-index="0" data-tab="tab1" class="flex items-center">
+              <div class="flex items-center">
+                <div
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-primary [[data-tab='tab1']_&]:hidden"
+                >
+                  <svg
+                    class="w-4 h-4 text-primary-foreground"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="hidden items-center justify-center w-6 h-6 [[data-tab='tab1']_&]:flex"
+                >
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+                <span
+                  class="ml-2 text-sm text-primary [[data-tab='tab1']_&]:text-text-primary"
+                  >Ерөнхий мэдээлэл</span
+                >
+              </div>
+
+              <!-- Progress line -->
+              <div
+                class="flex-grow mx-4 h-[2px] bg-primary [[data-tab='tab1']_&]:bg-gray-200"
+              ></div>
+
+              <!-- Step 2 -->
+              <div class="flex items-center">
+                <div
+                  class="hidden items-center justify-center w-6 h-6 [[data-tab='tab2']_&]:flex"
+                >
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+                <span
+                  class="ml-2 text-sm text-text-secondary [[data-tab='tab2']_&]:text-text-primary"
+                  >Бүртгэл</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold mb-3">Шинээр бүртгүүлэх</h2>
+            <p class="text-text-secondary">
+              Та доорх хэсэгт мэдээллээ үнэн зөв оруулна уу.
+            </p>
+          </div>
+          <div class="pb-10">
+            <div data-tab-content="tab1">
+              <form class="space-y-5">
+                <input
+                  type="text"
+                  id="firstName"
+                  placeholder="Овог"
+                  class="w-full plumaInput"
+                />
+
+                <input
+                  type="text"
+                  id="lastName"
+                  placeholder="Нэр"
+                  class="w-full plumaInput"
+                />
+                <input
+                  type="text"
+                  id="organization"
+                  placeholder="Байгууллага"
+                  class="w-full plumaInput"
+                />
+                <input
+                  type="text"
+                  id="position"
+                  placeholder="Албан тушаал"
+                  class="w-full plumaInput"
+                />
+                <div class="text-center space-y-5">
+                  <button
+                    type="button"
+                    class="w-full plumaPrimaryButton mt-2 lg:mt-6"
+                    onclick="switchTab('tab2')"
+                  >
+                    Үргэлжлүүлэх
+                  </button>
+                  <a
+                    href="/journalist/pages/auth/login.html"
+                    class="lg:hidden text-text-primary hover:underline"
+                    >Бүртгэлтэй хаягаар нэвтрэх</a
+                  >
+                </div>
+              </form>
+            </div>
+
+            <div data-tab-content="tab2" class="hidden">
+              <form class="space-y-5">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="И-мэйл хаяг"
+                  class="w-full plumaInput"
+                />
+
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  placeholder="Утасны дугаар"
+                  class="w-full plumaInput"
+                />
+
+                <div class="relative">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Нууц үг"
+                    class="w-full plumaInput"
+                  />
+                  <button
+                    type="button"
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <svg
+                      class="h-5 w-5 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="relative">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Нууц үг давтах"
+                    class="w-full plumaInput"
+                  />
+                  <button
+                    type="button"
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <svg
+                      class="h-5 w-5 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="termsAndConditions"
+                    class="plumaCheckbox"
+                  />
+                  <label
+                    for="termsAndConditions"
+                    class="flex-1 plumaLabel ml-2 cursor-pointer"
+                    ><span class="underline">Үйлчилгээний нөхцөл</span> болон
+                    гэрээг хүлээн зөвшөөрч байна.</label
+                  >
+                </div>
+                <div class="text-center">
+                  <a href="/journalist/pages/auth/register-complete.html">
+                    <button
+                      type="button"
+                      class="w-full plumaPrimaryButton mt-2 lg:mt-6"
+                    >
+                      Бүртгэл дуусгах
+                    </button>
+                  </a>
+                  <a
+                    href="/journalist/pages/auth/login.html"
+                    class="lg:hidden text-text-primary hover:underline mt-5"
+                    >Бүртгэлтэй хаягаар нэвтрэх</a
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -7,6 +7,15 @@
   --fc-button-active-bg-color: #0000000a;
   --fc-button-active-border-color: #00000000;
 }
+
+.leftSideBackground {
+  background: url(../assets/images/auth/bg-pattern.png),
+    url(../assets/images/auth/bg.jpg);
+  background-size: auto, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: auto, center;
+}
+
 .ql-container {
   border: 0px solid black !important;
   background-color: white;

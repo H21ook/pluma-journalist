@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluma - Бүртгүүлэх</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <script src="../../js/auth.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f8a698;
+        --color-primary-foreground: #ffffff;
+        --color-primary-light: #ffa69e;
+        --color-primary-dark: #eb8b80;
+        --color-text-disabled: #919eab;
+        --color-text-primary: #212b36;
+        --color-text-secondary: #637381;
+        --color-divider: #dce4e8;
+        --color-success: #54d62c;
+        --color-success-background: #54d62c29;
+        --color-success-foreground: #ffffff;
+        --font-manrope: "Manrope", sans-serif;
+      }
+
+      body {
+        @apply font-manrope text-sm font-normal text-text-primary border-gray-200;
+      }
+
+      .plumaLabel {
+        @apply block text-sm text-text-primary;
+      }
+
+      .plumaInput {
+        @apply px-3 py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-light shadow-sm placeholder:text-text-disabled text-sm align-middle;
+      }
+
+      .plumaButton {
+        @apply font-medium py-2.5 px-4 rounded-md transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50;
+      }
+
+      .plumaPrimaryButton {
+        @apply bg-primary hover:bg-primary-dark text-primary-foreground font-medium py-2.5 px-4 rounded-md transition duration-200;
+      }
+
+      .plumaCheckbox {
+        @apply appearance-none relative size-5 rounded-sm cursor-pointer border border-gray-200 checked:bg-primary focus:outline-none focus:ring-1 focus:ring-primary-light checked:after:content-[''] checked:after:absolute checked:after:left-[7px] checked:after:top-[3px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-solid checked:after:border-primary-foreground checked:after:rotate-45;
+      }
+    </style>
+  </head>
+  <body class="h-screen flex flex-col md:flex-row">
+    <!-- Left side with background image and logo -->
+    <div
+      class="hidden lg:block lg:w-1/2 xl:w-2/5 relative overflow-hidden leftSideBackground"
+    >
+      <div
+        class="relative h-full flex items-center justify-center bg-[#D5938ACC]"
+      >
+        <img
+          src="../../assets/images/auth/logo.png"
+          alt="Pluma logo"
+          class="w-1/2 object-contain"
+        />
+      </div>
+    </div>
+
+    <!-- Right side with login form -->
+    <div
+      class="relative size-full lg:w-1/2 xl:w-3/5 flex items-center justify-center p-4"
+    >
+      <div class="w-full max-w-sm space-y-10">
+        <div class="w-full max-w-md text-center">
+          <!-- Success icon -->
+          <div
+            class="mx-auto size-15 bg-success-background rounded-3xl flex items-center justify-center mb-4"
+          >
+            <div class="bg-success rounded-full p-1">
+              <svg
+                class="w-10 h-10 text-success-foreground"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Success message -->
+          <h2 class="text-2xl font-bold mb-2.5">Амжилттай</h2>
+          <p class="text-text-secondary mb-8">Таны бүртгэл амжилттай үүслээ.</p>
+
+          <!-- Button -->
+          <a href="/journalist/pages/auth/login.html">
+            <button class="plumaPrimaryButton">Нэвтрэх</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
