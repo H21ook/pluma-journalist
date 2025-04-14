@@ -218,6 +218,32 @@ function init(page) {
           emptyImage.classList.remove("hidden");
         }
       });
+
+    document.getElementById("openModal").addEventListener("click", function () {
+      const dialog = document.getElementById("modal");
+      dialog.classList.remove("hidden"); // Dialog нээх
+      document.body.style.overflow = "hidden"; // Body scroll-ыг нуух
+    });
+
+    // Dialog хаах товч
+    const closeButtons = document.querySelectorAll(".closeModal");
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const dialog = document.getElementById("modal");
+        dialog.classList.add("hidden"); // Dialog хаах
+        document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
+      });
+    });
+
+    document
+      .getElementById("modal")
+      .addEventListener("click", function (event) {
+        if (event.target.id === "modal") {
+          event.target?.classList?.add("hidden"); // Dialog хаах
+          document.body.style.overflow = "auto"; // Body scroll-ыг сэргээх
+        }
+      });
   }
 
   if (page === "index2") {
